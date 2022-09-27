@@ -1,1 +1,4 @@
-FROM baseImage
+FROM golang:latest
+COPY .. ./client
+RUN cd client && go build -o client ./cmd/client/main.go
+CMD ["./client/client"]

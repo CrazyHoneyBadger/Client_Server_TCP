@@ -1,1 +1,18 @@
+version: '3.9'
+services:
+  server:
+    build: ./server
+    environment:
+      - PASSWORD=12345618
 
+    ports:
+      - "8080:8080"
+
+  client:
+    build: ./client
+    environment:
+      - NET_ADDR=server:8080
+    links:
+      - server
+    depends_on:
+      - server
